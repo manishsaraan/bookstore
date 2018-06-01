@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { testAction } from "./actions/book";
 import './App.css';
 
 class App extends Component {
+  componentWillMount(){
+    this.props.testAction();
+  }
   render() {
+    console.log(this.props)
     return (
       <div>
         <form className="form-wrapper">
@@ -14,4 +20,6 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ book }) => ({book: book.data});
+
+export default connect(mapStateToProps, { testAction })(App);
