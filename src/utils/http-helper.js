@@ -1,18 +1,22 @@
 import axios from 'axios';
-import xmlToJson from './data-helper';
 import key from '../config';
 
-const get = async ({ url }) => {
+const getRequest = async ({ url }) => {
 
-    const baseUrl = " https://www.goodreads.com";
-    const apiUrl = `${baseUrl}/${url}&key=${key}`;
+    const baseUrl = "https://www.googleapis.com/books/v1/volumes";
+    const apiUrl = `${baseUrl}?${url}&key=${key}`;
     try{
-        const resp = await axios({url: apiUrl});
-        const parsedResp = await xmlToJson(resp);
-        return parsedResp;
+        const { data, status } = await axios({url: apiUrl});
+        if(status === 200){
+            console.log('--------data', data);
+            return data;
+        }
+        else{
+            //todo
+        }
     } catch (error) {
         return { error };
     }
 }
 
-export default get;
+export default getRequest;

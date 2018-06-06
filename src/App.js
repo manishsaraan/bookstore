@@ -11,9 +11,11 @@ class App extends Component {
        this.props.searchBooks(value);
   }
   render() {
-    const {  books: booksData } = this.props;
-    const { isLoading, books } = booksData;
-    const viewBooks = Object.keys(books).map((book, key) => <ViewBook book={books[key]} key={key} />);
+    const {  books: { books: booksData } } = this.props;
+    const { isLoading, items = [], totalItems } = booksData;
+
+    console.log(items,'------------thie.totalItems--------', totalItems);
+    const viewBooks = items.map((book, key) => <ViewBook book={book} key={key} />);
     return (
       <div>
         <Search
@@ -22,7 +24,6 @@ class App extends Component {
           />
         <div className="container">
           <div className="row">
-              {viewBooks}
           </div>
         </div>
       </div>
