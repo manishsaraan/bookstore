@@ -1,5 +1,6 @@
+import { delay } from 'redux-saga';
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { 
+import {
     SEARCH_BOOKS,
     searchBooksSuccess,
     searchBooksRequested,
@@ -8,7 +9,9 @@ import getRequest from '../utils/http-helper';
 
 export function* getBooks({ payload: { search } }) {
     //showing the loader
+
     yield put(searchBooksRequested());
+    yield delay(1000);
 
     const data = yield call(getRequest, { url: `q=${search}` });
 

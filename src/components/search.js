@@ -14,7 +14,7 @@ class Search extends PureComponent {
           handleSubmit,
           isLoading
         } = this.props;
-        console.log(isLoading)
+
         return (
           <div className="search_wrapper">
             <form className="form-wrapper" onSubmit={ (e) => handleSubmit(e, this.state) }>
