@@ -10,7 +10,7 @@ a {
 }
 /*========*/
 
-.form-wrapper {
+.search_wrapper .form-wrapper {
 	background-color: #f6f6f6;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eae8e8));
 	background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);
@@ -33,7 +33,7 @@ a {
 	width: 450px;
 }
 
-.form-wrapper #search {
+.search_wrapper .form-wrapper #search {
 	border: 1px solid #CCC;
 	-webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
 	-moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
@@ -44,12 +44,12 @@ a {
   color: #999;
 	float: left;
 	font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
-	height: 20px;
+	height: 45px;
 	padding: 10px;
 	width: 320px;
 }
 
-.form-wrapper #search:focus {
+.search_wrapper .form-wrapper #search:focus {
 	border-color: #aaa;
 	-webkit-box-shadow: 0 1px 1px #bbb inset;
 	-moz-box-shadow: 0 1px 1px #bbb inset;
@@ -57,14 +57,14 @@ a {
 	outline: 0;
 }
 
-.form-wrapper #search:-moz-placeholder,
-.form-wrapper #search:-ms-input-placeholder,
-.form-wrapper #search::-webkit-input-placeholder {
+.search_wrapper .form-wrapper #search:-moz-placeholder,
+.search_wrapper .form-wrapper #search:-ms-input-placeholder,
+.search_wrapper .form-wrapper #search::-webkit-input-placeholder {
 	color: #999;
 	font-weight: normal;
 }
 
-.form-wrapper #submit {
+.search_wrapper .form-wrapper #submit {
 	background-color: #0483a0;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#31b2c3), to(#0483a0));
 	background-image: -webkit-linear-gradient(top, #31b2c3, #0483a0);
@@ -90,8 +90,8 @@ a {
 	width: 100px;
 }
 
-.form-wrapper #submit:hover,
-.form-wrapper #submit:focus {
+.search_wrapper .form-wrapper #submit:hover,
+.search_wrapper .form-wrapper #submit:focus {
 	background-color: #31b2c3;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#0483a0), to(#31b2c3));
 	background-image: -webkit-linear-gradient(top, #0483a0, #31b2c3);
@@ -101,13 +101,16 @@ a {
 	background-image: linear-gradient(top, #0483a0, #31b2c3);
 }
 
-.form-wrapper #submit:active {
+.search_wrapper .form-wrapper #submit:active {
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
 	outline: 0;
 }
 
-.form-wrapper #submit::-moz-focus-inner {
+.search_wrapper .form-wrapper #submit::-moz-focus-inner {
 	border: 0;
 }
+
+.card-img-top{ height: 300px;}
+.book_container{ margin: 15px 0; }

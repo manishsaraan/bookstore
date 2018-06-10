@@ -1,5 +1,13 @@
 import { createAction } from 'redux-actions';
 
-export const TEST = 'TEST';
-export const SEND_TEST = 'SEND_TEST';
-export const testAction  = createAction(TEST);
+export const SEARCH_BOOKS_REQUESTED = 'SEARCH_BOOKS_REQUESTED';
+export const searchBooksRequested = createAction(SEARCH_BOOKS_REQUESTED);
+
+export const SEARCH_BOOKS_SUCCESS = 'SEARCH_BOOKS_SUCCESS';
+export const searchBooksSuccess = createAction(SEARCH_BOOKS_SUCCESS);
+
+export const SEARCH_BOOKS_FAILURE = 'SEARCH_BOOKS_FAILURE';
+export const searchBooksFailure = createAction(SEARCH_BOOKS_FAILURE);
+
+export const SEARCH_BOOKS = 'SEARCH_BOOKS';
+export const searchBooks = createAction(SEARCH_BOOKS);

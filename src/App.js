@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { testAction } from "./actions/book";
+import { searchBooks } from "./actions/book";
+import Search from './components/search';
+import ViewBook from './components/view-book';
 import './App.css';
 
 class App extends Component {
-  componentWillMount(){
-    this.props.testAction();
+  handleSubmit = (e, value) => {
+       e.preventDefault();
+       this.props.searchBooks(value);
   }
   render() {
-    console.log(this.props)
+    const {  books: booksData } = this.props;
+    const { isLoading, books } = booksData;
+    const viewBooks = Object.keys(books).map((book, key) => <ViewBook book={books[key]} key={key} />);
     return (
       <div>
-        <form className="form-wrapper">
-            <input type="text" id="search" placeholder="Search for..." required/>
-            <input type="submit" value="go" id="submit"/>
-        </form>
+        <Search
+          handleSubmit={ this.handleSubmit }
+          isLoading= {isLoading }
+          />
+        <div className="container">
+          <div className="row">
+              {viewBooks}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ book }) => ({book: book.data});
+const mapStateToProps = ( {books} ) => ({ books });
 
-export default connect(mapStateToProps, { testAction })(App);
+export default connect(mapStateToProps, { searchBooks })(App);
