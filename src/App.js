@@ -3,12 +3,23 @@ import { connect } from 'react-redux';
 import { searchBooks } from "./actions/book";
 import Search from './components/search';
 import ViewBook from './components/view-book';
+import Pagination from './components/Pagination';
 import './App.css';
 
 class App extends Component {
+  state = {
+    pageCount: 1,
+  };
+
   handleSubmit = (e, value) => {
        e.preventDefault();
        this.props.searchBooks(value);
+  }
+
+  LoadMoreBooks = (type) => {
+    const { pageCount } = this.state;
+    type === 'add' ? pageCount + 1 : pageCount -1;
+    this.setState({ pageCoun });
   }
   render() {
 
@@ -24,11 +35,17 @@ class App extends Component {
           handleSubmit={ this.handleSubmit }
           isLoading= {isLoading }
           />
-        <div className="container">
-          <div className="row">
-              {viewBooks}
-          </div>
+        { items.length > 0 && (<div className="container">
+                <div className="row">
+                    {viewBooks}
+                </div>
+                <div className="pagination-container">
+                  <button onClick={ () => this.LoadMoreBooks('add') } disabled={this.state.pageCount === 1}>Previous</button>
+                  <button onClick={ () => this.LoadMoreBooks('remove') } >Next</button>
+                </div>
         </div>
+        )
+        }
       </div>
     );
   }
