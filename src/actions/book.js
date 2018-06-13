@@ -11,3 +11,7 @@ export const searchBooksFailure = createAction(SEARCH_BOOKS_FAILURE);
 
 export const SEARCH_BOOKS = 'SEARCH_BOOKS';
 export const searchBooks = createAction(SEARCH_BOOKS);
+
+export const LOAD_MORE_BOOKS = 'LOAD_MORE_BOOKS';
+export const loadMoreBooks = createAction(LOAD_MORE_BOOKS);
+

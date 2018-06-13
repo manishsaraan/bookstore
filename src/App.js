@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchBooks } from "./actions/book";
+import { searchBooks, loadMoreBooks } from "./actions/book";
 import Search from './components/search';
 import ViewBook from './components/view-book';
 import Pagination from './components/Pagination';
@@ -19,7 +19,8 @@ class App extends Component {
   LoadMoreBooks = (type) => {
     const { pageCount } = this.state;
     type === 'add' ? pageCount + 1 : pageCount -1;
-    this.setState({ pageCoun });
+    this.setState({ pageCount });
+    this.props.loadMoreBooks(pageCount);
   }
   render() {
 
@@ -53,4 +54,4 @@ class App extends Component {
 
 const mapStateToProps = ( {books} ) => ({ books });
 
-export default connect(mapStateToProps, { searchBooks })(App);
+export default connect(mapStateToProps, { searchBooks, loadMoreBooks })(App);

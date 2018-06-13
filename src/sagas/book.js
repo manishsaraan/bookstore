@@ -1,7 +1,8 @@
 import { delay } from 'redux-saga';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { all, call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 import {
     SEARCH_BOOKS,
+    LOAD_MORE_BOOKS,
     searchBooksSuccess,
     searchBooksRequested,
 } from "../actions/book";
@@ -20,6 +21,12 @@ export function* getBooks({ payload: { search } }) {
 
 }
 
+export function* loadMoreBooksSaga({ payload }) {
+    console.log(payload);
+}
 export function* bookSaga() {
-    yield takeEvery(SEARCH_BOOKS, getBooks);
+    yield all[
+        takeEvery(SEARCH_BOOKS, getBooks),
+        takeLatest(LOAD_MORE_BOOKS, loadMoreBooksSaga)
+    ];
 }
