@@ -8,7 +8,6 @@ class App extends Component {
     this.props.testAction();
   }
   render() {
-    console.log(this.props)
     return (
       <div>
         <form className="form-wrapper">
