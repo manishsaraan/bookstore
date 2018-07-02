@@ -1,15 +1,23 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { TEST, SEND_TEST } from "../actions/book";
+import { 
+    SEARCH_BOOKS,
+    searchBooksSuccess,
+    searchBooksRequested,
+} from "../actions/book";
 import getRequest from '../utils/http-helper';
 
-export function* getBooks() {
-    yield call(getRequest, { url: 'search/index.xml?q=rich'}, (data) => {
-        console.log('--------',data)
-    });
+export function* getBooks(query) {
 
-    yield put({ type: SEND_TEST});
+    //showing the loader
+    yield put(searchBooksRequested());
+
+    const { GoodreadsResponse } = yield call(getRequest, { url: `search/index.xml?q=${query}` });
+    //const { search: { result: { work: finalResponse } } } = GoodreadsResponse;
+    console.log('-------searchBooksSuccess', GoodreadsResponse);
+
+
 }
 
 export function* bookSaga() {
-    yield takeEvery(TEST, getBooks);
+    yield takeEvery(SEARCH_BOOKS, getBooks);
 }
