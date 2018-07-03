@@ -1,9 +1,16 @@
 import axios from 'axios';
-const get = async ({ url }) => {
-    const baseUrl = " https://www.goodreads.com/search/index.xml";
-    const apiUrl = `${baseUrl}/${url}/&key=${key}`;
+import to_json from "xmljson";
+import key from '../config';
+
+const get = async ({ url }, cb) => {
+
+    const baseUrl = " https://www.goodreads.com";
+    const apiUrl = `${baseUrl}/${url}&key=${key}`;
     try{
-       return axios({url: apiUrl});
+        const resp = await axios({url: apiUrl});
+        to_json.to_json(resp.data, (err, data) => {
+            cb(data);
+        });
     } catch (error) {
         return { error };
     }
