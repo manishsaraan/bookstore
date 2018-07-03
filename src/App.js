@@ -14,14 +14,18 @@ class App extends Component {
        this.props.searchBooks(value);
   }
   render() {
+    const { isLoading, books } = this.props;
     return (
       <div>
-        <Search handleSubmit={ this.handleSubmit }/>
+        <Search
+          handleSubmit={ this.handleSubmit }
+          isLoading= {isLoading }
+          />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ book }) => ({book: book.data});
+const mapStateToProps = ({ books }) => ({ books: { books }});
 
 export default connect(mapStateToProps, { searchBooks })(App);

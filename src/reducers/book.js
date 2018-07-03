@@ -6,20 +6,23 @@ import {
 
 //set initial state
 const initialState = {
-    data: [],
+    books: [],
     errors: {},
     isLoading: false
 };
 
-export default function books(state = initialState, { type, payload }) {
+const books = (state = initialState, { type, payload }) =>  {
+    console.log(payload,'payload');
     switch (type) {
         case SEARCH_BOOKS_REQUESTED:
           return { ...state,isLoading: true }
         case SEARCH_BOOKS_SUCCESS:
-          return { ...state, data: [{ 'name': 'test book'}]};
+            return { ...state, books: { ...payload }};
         case SEARCH_BOOKS_FAILURE:
             return { ...state, errors: { ...payload } }
         default:
           return { ...state };
     }
 }
+
+export default books;

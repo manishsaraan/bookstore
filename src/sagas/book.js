@@ -5,6 +5,7 @@ import {
     searchBooksRequested,
 } from "../actions/book";
 import getRequest from '../utils/http-helper';
+import { getResponseInJson } from "../utils/data-helper";
 
 export function* getBooks(query) {
 
@@ -12,8 +13,8 @@ export function* getBooks(query) {
     yield put(searchBooksRequested());
 
     const { GoodreadsResponse } = yield call(getRequest, { url: `search/index.xml?q=${query}` });
-    //const { search: { result: { work: finalResponse } } } = GoodreadsResponse;
-    console.log('-------searchBooksSuccess', GoodreadsResponse);
+
+    yield put(searchBooksSuccess(getResponseInJson(GoodreadsResponse)));
 
 
 }
