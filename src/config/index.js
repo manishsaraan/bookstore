@@ -1,3 +1,3 @@
-const key = "KdbJgg5FBhPvHS5QXxyo5w";
+const key = "Your key goes here";
 
 export default key;
