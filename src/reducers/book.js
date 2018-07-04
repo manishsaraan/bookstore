@@ -12,14 +12,13 @@ const initialState = {
 };
 
 const books = (state = initialState, { type, payload }) =>  {
-    console.log(payload,'payload');
     switch (type) {
         case SEARCH_BOOKS_REQUESTED:
-          return { ...state,isLoading: true }
+          return { ...state, isLoading: true }
         case SEARCH_BOOKS_SUCCESS:
-            return { ...state, books: { ...payload }};
+            return { ...state, books: { ...payload }, isLoading: false};
         case SEARCH_BOOKS_FAILURE:
-            return { ...state, errors: { ...payload } }
+            return { ...state, errors: { ...payload }, isLoading: false }
         default:
           return { ...state };
     }

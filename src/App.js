@@ -5,16 +5,14 @@ import Search from './components/search';
 import './App.css';
 
 class App extends Component {
-  componentWillMount(){
-    this.props.searchBooks();
-  }
-
   handleSubmit = (e, value) => {
        e.preventDefault();
        this.props.searchBooks(value);
   }
   render() {
-    const { isLoading, books } = this.props;
+    const {  books: booksData } = this.props;
+    const { isLoading, books } = booksData;
+
     return (
       <div>
         <Search
@@ -26,6 +24,6 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ books }) => ({ books: { books }});
+const mapStateToProps = ( {books} ) => ({ books });
 
 export default connect(mapStateToProps, { searchBooks })(App);
