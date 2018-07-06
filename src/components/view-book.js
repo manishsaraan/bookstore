@@ -1,10 +1,11 @@
 import React from 'react';
 
 const ViewBook = ({ book }) => {
+    console.log(book);
     const { best_book } = book;
     const { author } = best_book;
     return (
-        <div className="col-md-3">
+        <div className="col-md-3 book_container">
         <div className="card">
                 <img className="card-img-top" src={best_book.image_url} alt="Card image cap"/>
                 <div className="card-body">
@@ -13,7 +14,6 @@ const ViewBook = ({ book }) => {
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">Rating: {book.average_rating}</li>
-                    <li className="list-group-item">Published Year: {book.original_publication_year}</li>
                     <li className="list-group-item">Rating Count: {book.ratings_count}</li>
                 </ul>
         </div>

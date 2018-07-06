@@ -15,10 +15,12 @@ class Search extends PureComponent {
         } = this.props;
         console.log(isLoading)
         return (
+          <div className="search_wrapper">
             <form className="form-wrapper" onSubmit={ (e) => handleSubmit(e, this.state) }>
                 <input onChange={this.handleChange} type="text" id="search" placeholder="Search for..." required value={this.state.search} />
-                <button type="submit" disabled={ isLoading }>{isLoading ? 'Searching': 'Search'}</button>
+                    <button type="submit" id="submit" disabled={ isLoading }>{isLoading ? 'Searching': 'Search'}</button>
             </form>
+        </div>
         );
     }
 }
