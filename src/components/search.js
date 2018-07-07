@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { ScaleLoader } from 'react-spinners';
 
 class Search extends PureComponent {
     state = {
@@ -18,7 +19,9 @@ class Search extends PureComponent {
           <div className="search_wrapper">
             <form className="form-wrapper" onSubmit={ (e) => handleSubmit(e, this.state) }>
                 <input onChange={this.handleChange} type="text" id="search" placeholder="Search for..." required value={this.state.search} />
-                    <button type="submit" id="submit" disabled={ isLoading }>{isLoading ? 'Searching': 'Search'}</button>
+                    <button type="submit" id="submit" disabled={ isLoading }>{isLoading ? 
+                        <ScaleLoader color={'#123abc'} loading={isLoading} />
+                        : 'Search'}</button>
             </form>
         </div>
         );
